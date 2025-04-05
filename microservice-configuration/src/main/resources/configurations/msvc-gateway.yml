@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: msvc-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: movies-service
+          uri: http://localhost:8090
+          predicates:
+            - Path=/api/movies/**
+
+        - id: msvc-auth
+          uri: http://localhost:8092
+          predicates:
+            - Path=/api/auth/**
+
+
+security:
+  service:
+    url: http://localhost:8092/api/auth
+
+eureka:
+  client:
+    register-with-eureka: false

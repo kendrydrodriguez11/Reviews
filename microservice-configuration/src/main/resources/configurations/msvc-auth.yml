@@ -1,0 +1,30 @@
+server:
+  port: 8092
+
+spring:
+  application:
+    name: msvc-auth
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/movies
+    username:
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      database: mysql
+      database-platform: org.hibernate.MySQL8Dialect
+
+jwt:
+  time:
+    expiration: 3600000
+
+  secret:
+    key: 76397924423F45264828406251655468576D5A7134743777217A25432A46204A
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
